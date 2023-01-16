@@ -1,0 +1,19 @@
+include ./components/head.pug
+include ./components/navigation.pug
+.pt-10.pb-10.mb-10.mt-10
+.overflow-y-auto.pb-10(aria-labelledby='modal-title' role='dialog' aria-modal='true')
+  .flex.items-end.justify-center.min-.px-4.pt-4.pb-20.text-center(class='sm:block sm:p-0')
+    .transition-opacity.bg-gray-500.bg-opacity-75(aria-hidden='true')
+    span.hidden(class='sm:inline-block sm:align-middle sm:' aria-hidden='true') &ZeroWidthSpace;
+    // Modal panel : This is where you put the pop-up's content, the div on top this coment is the wrapper
+    .inline-block.p-5.overflow-hidden.text-left.align-bottom.transition-all.transform.bg-white.rounded-lg.shadow-2xl(class='lg:p-16 sm:my-8 sm:align-middle sm:max-w-xl sm:w-full')
+      div
+        .mt-3.text-left(class='sm:mt-5')
+          h1.mb-8.text-2xl.font-semibold.leading-none.tracking-tighter.text-neutral-600 Вийти з облікового запису?
+          p.mx-auto.text-base.leading-relaxed.text-gray-500
+            | Ви підтверджуєте, що хочете вийти зі свого облікового запису?
+      .mt-6(class='sm:flex')
+        .mt-3.rounded-lg(class='sm:mt-0')
+          button.items-center.block.px-10.text-base.font-medium.text-center.text-blue-600.transition.duration-500.ease-in-out.transform.border-2.border-white.shadow-md.rounded-xl(class='py-3.5 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500') На головну
+        .mt-3.rounded-lg(class='sm:mt-0 sm:ml-3')
+          button.items-center.block.px-10.py-4.text-base.font-medium.text-center.text-white.transition.duration-500.ease-in-out.transform.bg-blue-600.rounded-xl(class='hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500') Вийти

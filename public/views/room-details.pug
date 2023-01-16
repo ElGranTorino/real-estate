@@ -1,0 +1,146 @@
+include ./components/head.pug
+include ./components/navigation.pug
+script(type="text/javascript").
+  var options = { year: "long", month: "long", day: "long" };
+.bg-white
+  .pt-6
+    nav(aria-label='Breadcrumb')
+      ol.max-w-2xl.mx-auto.px-4.flex.items-center.space-x-2(role='list' class='sm:px-6 lg:max-w-7xl lg:px-8')
+        li
+          .flex.items-center
+            a.mr-2.text-sm.font-medium.text-gray-900(href='#')  Квартири 
+            svg.w-4.h-5.text-gray-300(width='16' height='20' viewbox='0 0 16 20' fill='currentColor' xmlns='http://www.w3.org/2000/svg' aria-hidden='true')
+              path(d='M5.697 4.34L8.98 16.532h1.327L7.025 4.341H5.697z')
+        li
+          .flex.items-center
+            a.mr-2.text-sm.font-medium.text-gray-900(href='#')  Продаж 
+            svg.w-4.h-5.text-gray-300(width='16' height='20' viewbox='0 0 16 20' fill='currentColor' xmlns='http://www.w3.org/2000/svg' aria-hidden='true')
+              path(d='M5.697 4.34L8.98 16.532h1.327L7.025 4.341H5.697z')
+        if product.rooms
+          li
+            .flex.items-center
+              a.mr-2.text-sm.font-medium.text-gray-900(href='#')  #{product.rooms}-кімнатні
+              svg.w-4.h-5.text-gray-300(width='16' height='20' viewbox='0 0 16 20' fill='currentColor' xmlns='http://www.w3.org/2000/svg' aria-hidden='true')
+                path(d='M5.697 4.34L8.98 16.532h1.327L7.025 4.341H5.697z')
+        li.text-sm
+          a.font-medium.text-gray-500(href='#' aria-current='page' class='hover:text-gray-600') #{product.title}
+    // Image gallery
+    .mt-6.max-w-2xl.mx-auto(class='sm:px-6 lg:max-w-7xl lg:px-8 lg:grid lg:grid-cols-3 lg:gap-x-8')
+      each img in product.images
+        .aspect-w-3.aspect-h-4.rounded-lg.overflow-hidden(class='lg:block mt-1')
+          img.w-full.h-full.object-center.object-cover(src='/' + img alt='Two each of gray, white, and black shirts laying flat.')
+    // Product info
+    .max-w-2xl.mx-auto.pt-10.pb-16.px-4(class='sm:px-6 lg:max-w-7xl lg:pt-16 lg:pb-24 lg:px-8 lg:grid lg:grid-cols-3 lg:grid-rows-[auto,auto,1fr] lg:gap-x-8')
+      .(class='lg:col-span-2 lg:border-r lg:border-gray-200 lg:pr-8')
+        h1.text-2xl.font-extrabold.tracking-tight.text-gray-900(class='sm:text-3xl') #{product.title}
+      // Options
+      .mt-4(class='lg:mt-0 lg:row-span-3')
+        h2.sr-only Інформація про квартиру
+        p.text-3xl.text-gray-900 $#{product.price}
+        div
+          h3.text-sm.text-gray-900.font-medium  #{author.name}
+          fieldset.mt-4
+            legend.sr-only #{author.name}
+            .flex.items-center.space-x-3
+              .flex.-space-x-1.overflow-hidden
+                img.inline-block.h-10.w-10.rounded-full.ring-2.ring-white(src='https://avatars.dicebear.com/api/personas/1' + author.id + '.svg' alt='')
+
+        .mt-6
+          h3.sr-only Рейтинг продавця
+          .flex.items-center
+            .flex.items-center
+              //
+                Heroicon name: solid/star
+                Active: "text-gray-900", Default: "text-gray-200"
+              svg.text-gray-900.h-5.w-5.flex-shrink-0(xmlns='http://www.w3.org/2000/svg' viewbox='0 0 20 20' fill='currentColor' aria-hidden='true')
+                path(d='M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z')
+              // Heroicon name: solid/star
+              svg.text-gray-900.h-5.w-5.flex-shrink-0(xmlns='http://www.w3.org/2000/svg' viewbox='0 0 20 20' fill='currentColor' aria-hidden='true')
+                path(d='M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z')
+              // Heroicon name: solid/star
+              svg.text-gray-900.h-5.w-5.flex-shrink-0(xmlns='http://www.w3.org/2000/svg' viewbox='0 0 20 20' fill='currentColor' aria-hidden='true')
+                path(d='M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z')
+              // Heroicon name: solid/star
+              svg.text-gray-900.h-5.w-5.flex-shrink-0(xmlns='http://www.w3.org/2000/svg' viewbox='0 0 20 20' fill='currentColor' aria-hidden='true')
+                path(d='M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z')
+              // Heroicon name: solid/star
+              svg.text-gray-200.h-5.w-5.flex-shrink-0(xmlns='http://www.w3.org/2000/svg' viewbox='0 0 20 20' fill='currentColor' aria-hidden='true')
+                path(d='M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z')
+            p.sr-only 4 out of 5 stars
+            a.ml-3.text-sm.font-medium.text-indigo-600(href='#' class='hover:text-indigo-500') 8 успішних угод
+        .mt-10
+          .mt-10
+            .flex.items-center.justify-between
+              h3.text-sm.text-gray-900.font-medium Спосіб оплати
+              a.text-sm.font-medium.text-indigo-600(href='#' class='hover:text-indigo-500') Як здійснити покупку?
+            fieldset.mt-4
+              legend.sr-only Оберіть спосіб оплати
+              .grid.grid-cols-4.gap-4(class='sm:grid-cols-8 lg:grid-cols-4')
+                // Active: "ring-2 ring-indigo-500"
+                label.group.relative.border.rounded-md.py-3.px-4.flex.items-center.justify-center.text-sm.font-medium.uppercase.bg-gray-50.text-gray-200.cursor-not-allowed(class='hover:bg-gray-50 focus:outline-none sm:flex-1 sm:py-6')
+                  input.sr-only(type='radio' name='size-choice' value='XXS' disabled='' aria-labelledby='size-choice-0-label')
+                  span#size-choice-0-label  
+                    img(src="/img/brands/ebanx.svg", alt="") 
+                  span.absolute.-inset-px.rounded-md.border-2.border-gray-200.pointer-events-none(aria-hidden='true')
+                    svg.absolute.inset-0.w-full.h-full.text-gray-200.stroke-2(viewbox='0 0 100 100' preserveaspectratio='none' stroke='currentColor')
+                      line(x1='0' y1='100' x2='100' y2='0' vector-effect='non-scaling-stroke')
+                // Active: "ring-2 ring-indigo-500"
+                label.group.relative.border.rounded-md.py-3.px-4.flex.items-center.justify-center.text-sm.font-medium.uppercase.bg-white.shadow-sm.text-gray-900.cursor-pointer(class='hover:bg-gray-50 focus:outline-none sm:flex-1 sm:py-6')
+                  input.sr-only(type='radio' name='size-choice' value='XS' aria-labelledby='size-choice-1-label')
+                  span#size-choice-1-label
+                    img(src="/img/brands/mastercard.svg", alt="") 
+                  span.absolute.-inset-px.rounded-md.pointer-events-none(aria-hidden='true')
+                // Active: "ring-2 ring-indigo-500"
+                label.group.relative.border.rounded-md.py-3.px-4.flex.items-center.justify-center.text-sm.font-medium.uppercase.bg-white.shadow-sm.text-gray-900.cursor-pointer(class='hover:bg-gray-50 focus:outline-none sm:flex-1 sm:py-6')
+                  input.sr-only(type='radio' name='size-choice' value='S' aria-labelledby='size-choice-2-label')
+                  span#size-choice-2-label
+                    img(src="/img/brands/visa.svg", alt="") 
+                  span.absolute.-inset-px.rounded-md.pointer-events-none(aria-hidden='true')
+                // Active: "ring-2 ring-indigo-500"
+                label.group.relative.border.rounded-md.py-3.px-4.flex.items-center.justify-center.text-sm.font-medium.uppercase.bg-white.shadow-sm.text-gray-900.cursor-pointer(class='hover:bg-gray-50 focus:outline-none sm:flex-1 sm:py-6')
+                  input.sr-only(type='radio' name='size-choice' value='M' aria-labelledby='size-choice-3-label')
+                  span#size-choice-3-label
+                    img(src="/img/brands/unionpay.svg", alt="") 
+                  span.absolute.-inset-px.rounded-md.pointer-events-none(aria-hidden='true')
+          button.mt-10.w-full.bg-blue-500.border.border-transparent.rounded-md.py-3.px-8.flex.items-center.justify-center.text-base.font-medium.text-white(type='submit' class='hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500' onclick="window.location = 'https://en.privatbank.ua/'") Придбати
+          if user
+            if user.id == product.author
+              form(method="delete" action='/delete/'+ product.id)
+                button.mt-10.w-full.bg-red-500.border.border-transparent.rounded-md.py-3.px-8.flex.items-center.justify-center.text-base.font-medium.text-white(type='submit' class='hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500') Видалити
+      .py-10(class='lg:pt-6 lg:pb-16 lg:col-start-1 lg:col-span-2 lg:border-r lg:border-gray-200 lg:pr-8')
+        // Description and details
+        div
+          h3.sr-only Опис
+          .space-y-6
+            p.text-base.text-gray-900 #{product.body}
+        .mt-10
+          h3.text-sm.font-medium.text-gray-900 Інфраструктура в межах 500м
+          .mt-4
+            ul.pl-4.list-disc.text-sm.space-y-2(role='list')
+              each item in product.infrastructure
+                li.text-gray-400
+                  span.text-gray-600 #{item}
+              
+            //- button.items-center.inline-block.ml-2.px-2.py-1.text-base.font-medium.text-center.text-white.transition.duration-500.ease-in-out.transform.bg-blue-600.rounded-xl.mt-6(class='lg:px-2 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500') Від власника
+            if product.floor
+              button.items-center.inline-block.ml-2.px-2.py-1.text-base.font-medium.text-center.text-white.transition.duration-500.ease-in-out.transform.bg-blue-600.rounded-xl.mt-6(class='lg:px-2 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500') Поверх: #{product.floor}
+            button.items-center.inline-block.ml-2.px-2.py-1.text-base.font-medium.text-center.text-white.transition.duration-500.ease-in-out.transform.bg-blue-600.rounded-xl.mt-6(class='lg:px-2 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500') Площа: #{product.square}м2
+            if product.rooms
+              button.items-center.inline-block.ml-2.px-2.py-1.text-base.font-medium.text-center.text-white.transition.duration-500.ease-in-out.transform.bg-blue-600.rounded-xl.mt-6(class='lg:px-2 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500') К-сть кімнат: #{product.rooms}
+            button.items-center.inline-block.ml-2.px-2.py-1.text-base.font-medium.text-center.text-white.transition.duration-500.ease-in-out.transform.bg-blue-600.rounded-xl.mt-6(class='lg:px-2 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500') Опалення: #{product.heating}
+            if product.furniture
+              button.items-center.inline-block.ml-2.px-2.py-1.text-base.font-medium.text-center.text-white.transition.duration-500.ease-in-out.transform.bg-blue-600.rounded-xl.mt-6(class='lg:px-2 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500') Меблювання: Так
+            else 
+              button.items-center.inline-block.ml-2.px-2.py-1.text-base.font-medium.text-center.text-white.transition.duration-500.ease-in-out.transform.bg-blue-600.rounded-xl.mt-6(class='lg:px-2 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500') Меблювання: Ні
+            button.items-center.inline-block.ml-2.px-2.py-1.text-base.font-medium.text-center.text-white.transition.duration-500.ease-in-out.transform.bg-blue-600.rounded-xl.mt-6(class='lg:px-2 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500') Ремонт: #{product.refit}
+        .mt-10
+          h2.text-sm.font-medium.text-gray-900 Деталі
+          .mt-4.space-y-6new 
+            ul.ad-details__list.text-sm.text-gray-600
+              li.ad-details__item(style="display: inline-block") #{product.date.toLocaleDateString('uk-UK', {hour: "2-digit", minute: "2-digit", month: 'long', day: '2-digit', year: "numeric"})}
+              li.ad-details__item(style="display: inline-block; margin-left: 1em") ID: #{product.date.getTime()}
+              li.ad-details__item(style="display: inline-block; margin-left: 1em") Переглядів: #{Number(Math.random() * 1000).toFixed(0)}
+              li.ad-details__item(style="display: inline-block; margin-left: 1em") В обраному: у #{Number(Math.random() * 100).toFixed(0)} користувачів
+include ./components/footer.pug
+script(type="text/javascript").
+  console.log(options);

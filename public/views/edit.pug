@@ -1,0 +1,146 @@
+include ./components/head.pug
+include ./components/navigation.pug
+
+section.w-full.bg-white(class='dark:bg-wickeddark' style="padding-top: 75px")
+  .relative.items-center.w-full.px-5.py-12.mx-auto.max-w-7xl(class='md:px-12 lg:px-16 lg:py-24')
+    .flex.w-full.mx-auto.text-left
+      .relative.inline-flex.items-center.mx-auto.align-middle
+        .pb-12.text-center(style="width: 100%")
+          h1.max-w-5xl.text-2xl.font-bold.leading-none.tracking-tighter.text-neutral-600(class='md:text-5xl lg:text-6xl lg:max-w-7xl')
+            | Я хочу отримати консультацію
+            br.hidden(class='lg:block')
+            |             ріелтора
+          p(class="class=max-w-xl mx-auto mt-8 text-base leading-relaxed text-gray-500") Lorem ipsum dolor sit amet consectetur, adipisicing elit. Vel, eveniet. Qui placeat fugit nostrum rem!.
+          form#revue-form.mt-8.transition.duration-500.ease-in-out.transform.border2.bg-gray-50.rounded-xl(action='' method='post' name='revue-form' target='_blank' class='md:mx-auto sm:max-w-3xl lg:flex')
+            .divide-y.space-y.4(class='lg:divide-x lg:divide-y-0 lg:flex')
+              .flex-1.min-w-0.revue-form-group
+                label.sr-only(for='name') Name
+                input#name.block.w-full.px-5.py-3.text-base.text-neutral-600.placeholder-gray-300.transition.duration-500.ease-in-out.transform.bg-transparent.border.border-transparent.rounded-md(type='text' class='focus:outline-none focus:border-transparent focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-300' placeholder="Ваше ім'я ")
+              .flex-1.min-w-0.revue-form-group
+                label.sr-only(for='member_email') Email address
+                input#cta-email.block.w-full.px-5.py-3.text-base.text-neutral-600.placeholder-gray-300.transition.duration-500.ease-in-out.transform.bg-transparent.border.border-transparent.rounded-md(type='email' class='focus:outline-none focus:border-transparent focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-300' placeholder='Номер мобільного  ')
+            .mt-4.revue-form-actions(class='sm:mt-0 lg:ml-3')
+              button#member_submit.block.w-full.px-5.py-3.text-base.font-medium.text-white.bg-blue-600.border.border-transparent.rounded-lg.shadow(type='submit' value='Subscribe' name='member[subscribe]' class='hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-300 sm:px-10') Отримати
+form(action='/new' method='POST' enctype="multipart/form-data")
+  div(style='padding: 150px 15% 50px')
+    .(class='md:grid md:grid-cols-3 md:gap-6')
+      .(class='md:col-span-1')
+        .px-4(class='sm:px-0')
+          h3.text-lg.font-medium.leading-6.text-gray-900 Основна інформація
+          p.mt-1.text-sm.text-gray-600
+      .mt-5(class='md:mt-0 md:col-span-2')
+          .shadow(class='sm:rounded-md sm:overflow-hidden')
+            .px-4.py-5.bg-white.space-y-6(class='sm:p-6')
+              .grid.grid-cols-3.gap-6
+                .col-span-3(class='sm:col-span-2')
+                  label.block.text-sm.font-medium.text-gray-700(for='title')  Заголовок 
+                  .mt-1.flex.rounded-md.shadow-sm
+                    input#title.flex-1.block.w-full.rounded-md.p-2.border-gray-900(type='text' name='title' class='focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm' placeholder='Продам квартиру-студію в новобудові ЖК "Щасливе"')
+                .col-span-6(class='sm:col-span-3')
+                  label.block.text-sm.font-medium.text-gray-700(for='price') Ціна
+                  input#price.mt-1.block.w-full.shadow-sm.border-gray-300.rounded-md.p-2(type='number' name='price' autocomplete='given-name' class='focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm' placeholder="35000")
+              div
+                label.block.text-sm.font-medium.text-gray-700(for='body')  Опис 
+                .mt-1
+                  textarea#body.shadow-sm.mt-1.p-5.pb-10.block.w-full.border.border-gray-300.rounded-md(name='body' rows='3' class='focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm' placeholder='Подумайте що ви хотіли б дізнатись зоголошення і додайте це в опис')
+              div
+                label.block.text-sm.font-medium.text-gray-700  Перше фото буде на обкладинці оголошення. 
+                .mt-1.flex.justify-center.px-6.pt-5.pb-6.border-2.border-gray-300.border-dashed.rounded-md
+                  .space-y-1.text-center
+                    svg.mx-auto.h-12.w-12.text-gray-400(stroke='currentColor' fill='none' viewbox='0 0 48 48' aria-hidden='true')
+                      path(d='M28 8H12a4 4 0 00-4 4v20m32-12v8m0 0v8a4 4 0 01-4 4H12a4 4 0 01-4-4v-4m32-4l-3.172-3.172a4 4 0 00-5.656 0L28 28M8 32l9.172-9.172a4 4 0 015.656 0L28 28m0 0l4 4m4-24h8m-4-4v8m-12 4h.02' stroke-width='2' stroke-linecap='round' stroke-linejoin='round')
+                    .flex.text-sm.text-gray-600
+                      label.relative.cursor-pointer.bg-white.rounded-md.font-medium.text-indigo-600(for='images' class='hover:text-indigo-500 focus-within:outline-none focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-indigo-500')
+                        span Завантажте зображення
+                        input#images.sr-only(name='images' type='file' multiple)
+                    p.text-xs.text-gray-500 PNG, JPG, GIF до 10MB
+            .px-4.py-3.bg-gray-50.text-right.p-10(class='sm:px-6')
+  .hidden(class='sm:block' aria-hidden='true')
+    .py-5
+      .border-t.border-gray-200
+  .mt-10(class='sm:mt-0' style='padding: 50px 15% 50px')
+    .(class='md:grid md:grid-cols-3 md:gap-6')
+      .(class='md:col-span-1')
+        .px-4(class='sm:px-0')
+          h3.text-lg.font-medium.leading-6.text-gray-900 Інформація про житлові умови
+          p.mt-1.text-sm.text-gray-600
+      .mt-5(class='md:mt-0 md:col-span-2')
+          .shadow.overflow-hidden(class='sm:rounded-md')
+            .px-4.py-5.bg-white(class='sm:p-6')
+              .grid.grid-cols-6.gap-6
+                .col-span-6(class='sm:col-span-3')
+                  label.block.text-sm.font-medium.text-gray-700(for='square') Площа:
+                  input#square.p-2.mt-1.block.w-full.shadow-sm.border-gray-300.rounded-md(type='number' name='square' autocomplete='given-name' class='focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm')
+                .col-span-6(class='sm:col-span-3')
+                  label.block.text-sm.font-medium.text-gray-700(for='floor') Поверх
+                  input#floor.p-2.mt-1.block.w-full.shadow-sm.border-gray-300.rounded-md(type='number' name='floor' autocomplete='given-name' class='focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm')
+                .col-span-6(class='sm:col-span-3')
+                  label.block.text-sm.font-medium.text-gray-700(for='rooms') К-сть кімнат
+                  select#rooms.mt-1.block.w-full.py-2.px-3.border.border-gray-300.bg-white.rounded-md.shadow-sm(name='rooms' autocomplete='country-name' class='focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm')
+                    option(value="1") 1
+                    option(value="2") 2
+                    option(value="3") 3
+                    option(value="4") 4
+                    option(value="5") 5+
+                .col-span-6(class='sm:col-span-3')
+                  label.block.text-sm.font-medium.text-gray-700(for='refit') Ремонт
+                  select#refit.mt-1.block.w-full.py-2.px-3.border.border-gray-300.bg-white.rounded-md.shadow-sm(name='refit' class='focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm')
+                    option(value="Відсутній") Відсутній
+                    option(value="Косметичний") Косметичний
+                    option(value="Євро") Євро
+                .col-span-6(class='sm:col-span-3')
+                  label.block.text-sm.font-medium.text-gray-700(for='heating') Опалення
+                  select#heating.mt-1.block.w-full.py-2.px-3.border.border-gray-300.bg-white.rounded-md.shadow-sm(name='heating' class='focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm')
+                    option(value="Автономне") Автономне
+                    option(value="Централізоване") Централізоване
+                .col-span-6(class='sm:col-span-3')
+                  label.block.text-sm.font-medium.text-gray-700(for='furniture') Меблювання
+                  select#furniture.mt-1.block.w-full.py-2.px-3.border.border-gray-300.bg-white.rounded-md.shadow-sm(name='furniture' class='focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm')
+                    option(value="Ні") Ні
+                    option(value="Так") Так
+            .px-4.py-3.bg-gray-50.text-right.p-10(class='sm:px-6')
+  .hidden(class='sm:block' aria-hidden='true')
+    .py-5
+      .border-t.border-gray-200
+  .mt-10(class='sm:mt-0' style='padding: 50px 15% 50px')
+    .(class='md:grid md:grid-cols-3 md:gap-6')
+      .(class='md:col-span-1')
+        .px-4(class='sm:px-0')
+          h3.text-lg.font-medium.leading-6.text-gray-900 Інформація про інфраструктуру
+      .mt-5(class='md:mt-0 md:col-span-2')
+          .shadow.overflow-hidden(class='sm:rounded-md')
+            .px-4.py-5.bg-white.space-y-6(class='sm:p-6')
+              fieldset
+                legend.sr-only  Інформація про інфраструктуру
+                .text-base.font-medium.text-gray-900(aria-hidden='true')  До 500 метрів
+                .mt-4.space-y-4
+                  .flex.items-start
+                    .flex.items-center.h-5
+                      input#bank.h-4.w-4.text-indigo-600.border-gray-300.rounded(name='infrastructure[]' value="Банкомат" type='checkbox' class='focus:ring-indigo-500')
+                    .ml-3.text-sm
+                      label.font-medium.text-gray-700(for='bank') Банкомат
+                  .flex.items-start
+                    .flex.items-center.h-5
+                      input#school.h-4.w-4.text-indigo-600.border-gray-300.rounded(name='infrastructure[]' value="Школа" type='checkbox' class='focus:ring-indigo-500')
+                    .ml-3.text-sm
+                      label.font-medium.text-gray-700(for='school') Школа
+                  .flex.items-start
+                    .flex.items-center.h-5
+                      input#store.h-4.w-4.text-indigo-600.border-gray-300.rounded(name='infrastructure[]' value="Магазин" type='checkbox' class='focus:ring-indigo-500')
+                    .ml-3.text-sm
+                      label.font-medium.text-gray-700(for='store') Магазин
+                  .flex.items-start
+                    .flex.items-center.h-5
+                      input#restaurant.h-4.w-4.text-indigo-600.border-gray-300.rounded(name='infrastructure[]' value="Ресторан" type='checkbox' class='focus:ring-indigo-500')
+                    .ml-3.text-sm
+                      label.font-medium.text-gray-700(for='restaurant') Ресторан
+                  .flex.items-start
+                    .flex.items-center.h-5
+                      input#busstation.h-4.w-4.text-indigo-600.border-gray-300.rounded(name='infrastructure[]' value="Зупинка" type='checkbox' class='focus:ring-indigo-500')
+                    .ml-3.text-sm
+                      label.font-medium.text-gray-700(for='busstation') Зупинка транспорту
+            .px-4.py-3.bg-gray-50.text-right.p-10(class='sm:px-6')
+  .mt-4.revue-form-actions(class='sm:mt-0 sm:ml-3')
+  input#member_submit.block.w-full.px-5.py-3.text-base.font-medium.text-white.bg-blue-600.border.border-transparent.rounded-lg.shadow(type='submit' class='hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-300 sm:px-10' style="max-width: 250px; margin: 40px auto;" value="Опублікувати") 
+
+include ./components/footer.pug

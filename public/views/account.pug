@@ -1,0 +1,37 @@
+include ./components/head.pug
+include ./components/navigation.pug
+section.w-full.bg-white(style="padding-top: 100px")
+  .relative.items-center.w-full.px-5.py-12.mx-auto.max-w-7xl(class='md:px-12 lg:px-16 lg:py-24')
+    .flex.w-full.mx-auto.text-left
+      .relative.inline-flex.items-center.mx-auto.align-middle
+        .text-center
+          h1.max-w-5xl.text-2xl.font-bold.leading-none.tracking-tighter.text-neutral-600(class='md:text-5xl lg:text-6xl lg:max-w-7xl')
+            |  Ваших оголошень з продажу 
+            br.hidden(class='lg:block')
+            |           нерухомості
+          p.max-w-xl.mx-auto.mt-8.text-base.leading-relaxed.text-gray-500
+            | Знаходьте найвигідніші пропозиції продажу житла від перевірених власників на нашому сайті.
+          .flex.justify-center.w-full.max-w-2xl.gap-2.mx-auto.mt-6
+            .mt-3.rounded-lg(class='sm:mt-0')
+              button.items-center.block.px-5.py-4.text-base.font-medium.text-center.text-white.transition.duration-500.ease-in-out.transform.bg-blue-600.rounded-xl(class='lg:px-10 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500' onclick="window.location='/new'") Додати нове
+            .mt-3.rounded-lg(class='sm:mt-0 sm:ml-3')
+              button.items-center.block.px-5.text-base.font-medium.text-center.text-blue-600.transition.duration-500.ease-in-out.transform.border-2.border-white.shadow-md.rounded-xl(class='lg:px-10 py-3.5 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500' onclick="window.location='/store'") Знайти квартиру
+
+.bg-gray-100
+  .max-w-7xl.mx-auto.px-4(class='sm:px-6 lg:px-8')
+    .max-w-2xl.mx-auto.py-16(class='sm:py-24 lg:py-32 lg:max-w-none')
+      h2.text-2xl.font-extrabold.text-gray-900 Мої оголошення
+      .mt-6.space-y-12(class='lg:space-y-0 lg:grid lg:grid-cols-3 lg:gap-x-6')
+        each ad in data
+          .group.relative
+            .relative.w-full.h-80.bg-white.rounded-lg.overflow-hidden(class='group-hover:opacity-75 sm:aspect-w-2 sm:aspect-h-1 sm:h-64 lg:aspect-w-1 lg:aspect-h-1')
+              img.w-full.h-full.object-center.object-cover(alt=ad.title src=ad.images[0] title=ad.images[0])
+            h3.mt-6.text-sm.text-gray-500
+              a(href='/details/' + ad.id)
+                span.absolute.inset-0
+                |               #{ad.date.toLocaleDateString('uk-UK', {hour: "2-digit", minute: "2-digit", month: 'long', day: '2-digit', year: "numeric"})}
+            p.text-base.font-semibold.text-gray-900 #{ad.title}
+
+
+
+include ./components/footer.pug
